@@ -4,12 +4,15 @@ use v5.14;
 
 use lib qw(lib);
 
-# use Action qw(getRef);
+use Github::Actions qw(error_on_file);
 
 my @files = @ARGV;
 
 for my $file (@files ) {
-  my $parseOutput = `yq eval $file 2>&1 1>/dev/null`;
-  say $parseOutput;
+  my $errorOutput = `yq eval $file 2>&1 1>/dev/null`;
+  if ( $errorOutput ne "" ) {
+    my ($line, $error) = $errorOutput =~ /line\s+(\d+)\:\s+(.+)/;
+    error_on_file( "Error en el fichero YAML", $file, $line, $error );
+  }
 }
 
