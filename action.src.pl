@@ -4,7 +4,7 @@ use v5.14;
 
 use lib qw(lib);
 
-use Github::Actions qw(error_on_file);
+use GitHub::Actions qw(error_on_file);
 
 my @files = @ARGV;
 
