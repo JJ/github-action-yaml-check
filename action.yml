@@ -1,13 +1,12 @@
-name: 'Hello Perl'
-description: 'Perl Github Action Template'
+name: 'Check YAML files'
+description: 'Check for validity YAML files and provide per-line errors'
 branding:
   icon: 'briefcase'
-  color: 'blue'
+  color: 'yellow'
 inputs:
-  template-input:  # Change this
-    description: 'What it is about'
-    required: false # or not
-    default: 'World'
+  files:
+    description: 'Which files need to be checked'
+    required: true
 runs:
   using: "composite"
   steps:
@@ -16,8 +15,10 @@ runs:
       shell: perl {0}
     - name: Print input
       env:
-        TEMPLATE_INPUT: ${{ inputs.template-input}}
-      run: print $ENV{'TEMPLATE_INPUT'}
+        FILES: ${{ inputs.files}}
+      run: print $ENV{'FILES'}
       shell: perl {0}
-    - run: ${GITHUB_ACTION_PATH}/action.pl
-      shell: bash
+    - name: Check YAML files
+      env:
+        FILES: ${{ inputs.files}}
+      run: ${GITHUB_ACTION_PATH}/action.pl $FILES

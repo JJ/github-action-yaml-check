@@ -4,10 +4,10 @@ use v5.14;
 
 use lib qw(lib);
 
-use Action qw(getRef);
+# use Action qw(getRef);
 
-my $ref= getRef();
+my @files = @ARGV;
 
-say "Ref is $ref";
+say "Files @files";
 
-exit(1) unless $ref;
+exit(1) unless @files;
