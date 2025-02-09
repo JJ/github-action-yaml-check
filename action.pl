@@ -9,8 +9,7 @@ use lib qw(lib);
 my @files = @ARGV;
 
 for my $file (@files ) {
-  my $parseOutput = `yq eval $file`;
+  my $parseOutput = `yq eval $file 2>&1 1>/dev/null`;
   say $parseOutput;
 }
 
-exit(1) unless @files;
