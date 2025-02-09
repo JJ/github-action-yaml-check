@@ -1,2 +1,4 @@
 ---
 test: yaml
+bar: baz
+baddie: [array
