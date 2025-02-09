@@ -11,13 +11,6 @@ runs:
   using: "composite"
   steps:
     - uses: actions/checkout@v4
-    - run: print %ENV;
-      shell: perl {0}
-    - name: Print input
-      env:
-        FILES: ${{ inputs.files}}
-      run: print $ENV{'FILES'}
-      shell: perl {0}
     - name: Check YAML files
       env:
         FILES: ${{ inputs.files}}
