@@ -11,6 +11,4 @@ jobs:
     - id: foo
       uses: ./
       with:
-        files:
-          - action.yml
-          - .github/workflows/test.yml
+        files: "action.yml .github/workflows/test.yml"
