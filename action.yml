@@ -22,3 +22,4 @@ runs:
       env:
         FILES: ${{ inputs.files}}
       run: ${GITHUB_ACTION_PATH}/action.pl $FILES
+      shell: bash
