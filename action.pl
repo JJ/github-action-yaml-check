@@ -8,6 +8,9 @@ use lib qw(lib);
 
 my @files = @ARGV;
 
-say "Files @files";
+for my $file (@files ) {
+  my $parseOutput = `yq eval $file`;
+  say $parseOutput;
+}
 
 exit(1) unless @files;
